@@ -6,7 +6,8 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 	<html>
 	<head>
 		<title>usuarios</title>
-		<?php require_once "menu.php"; ?>
+		
+		<?php include "menu.php"; ?>
 	</head>
 	<body>
 		<div class="container">
@@ -38,12 +39,13 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 
 
 		<!-- Modal -->
-		<div class="modal fade" id="actualizaUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog modal-sm" role="document">
+		<div class="modal" id="actualizaUsuarioModal" tabindex="-1" aria-labelledby="myModalLabel">
+			
+			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Actualiza Usuario</h4>
+						<h5 class="modal-title" id="myModalLabel">Actualiza Usuario</h5>
+						<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
 					</div>
 					<div class="modal-body">
 						<form id="frmRegistroU">
@@ -59,7 +61,6 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 					</div>
 					<div class="modal-footer">
 						<button id="btnActualizaUsuario" type="button" class="btn btn-warning" data-dismiss="modal">Actualiza Usuario</button>
-
 					</div>
 				</div>
 			</div>
@@ -97,7 +98,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 							$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
 							alertify.success("Eliminado con exito!!");
 						}else{
-							alertify.error("No se pudo eliminar :(");
+							alertify.error("No se pudo eliminar");
 						}
 					}
 				});
@@ -122,9 +123,9 @@ if(isset($_SESSION['usuario']) and $_SESSION['usuario']=='admin'){
 
 						if(r==1){
 							$('#tablaUsuariosLoad').load('usuarios/tablaUsuarios.php');
-							alertify.success("Actualizado con exito :D");
+							alertify.success("Actualizado con exito");
 						}else{
-							alertify.error("No se pudo actualizar :(");
+							alertify.error("No se pudo actualizar");
 						}
 					}
 				});

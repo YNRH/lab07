@@ -13,4 +13,4 @@
 		unset($_SESSION['tablaComprasTemp']);
 		echo $result;
 	}
-?>
+ ?>

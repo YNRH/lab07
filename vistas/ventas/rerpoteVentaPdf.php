@@ -54,7 +54,7 @@ $result=mysqli_query($conexion,$sql);
 
  		<table class="table">
  			<tr>
- 				<td>nombre producto</td>
+ 				<td>Nombre producto</td>
  				<td>Precio</td>
  				<td>Cantidad</td>
  				<td>Descripcion</td>

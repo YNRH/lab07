@@ -12,9 +12,7 @@
 										nombre,
 										apellido,
 										direccion,
-										email,
-										telefono,
-										rfc)
+										email, telefono, rfc)
 							values ('$idusuario',
 									'$datos[0]',
 									'$datos[1]',
@@ -34,9 +32,8 @@
 							apellido,
 							direccion,
 							email,
-							telefono,
-							rfc 
-				from clientes";
+							telefono, rfc 
+				from clientes where id_cliente='$idcliente'" ;
 			$result=mysqli_query($conexion,$sql);
 			$ver=mysqli_fetch_row($result);
 
@@ -46,9 +43,8 @@
 					'apellido' => $ver[2],
 					'direccion' => $ver[3],
 					'email' => $ver[4],
-					'telefono' => $ver[5],
-					'rfc' => $ver[6]
-						);
+					'telefono' => $ver[5], 'rfc' => $ver[6]
+					);
 			return $datos;
 		}
 
@@ -59,8 +55,7 @@
 										apellido='$datos[2]',
 										direccion='$datos[3]',
 										email='$datos[4]',
-										telefono='$datos[5]',
-										rfc='$datos[6]' 
+										telefono='$datos[5]', rfc='$datos[6]' 
 								where id_cliente='$datos[0]'";
 			return mysqli_query($conexion,$sql);
 		}

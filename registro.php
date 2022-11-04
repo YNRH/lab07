@@ -1,20 +1,21 @@
-<?php 
-	
-	require_once "clases/Conexion.php";
-	$obj= new conectar();
-	$conexion=$obj->conexion();
+<?php
 
-	$sql="SELECT * from usuarios where email='admin'";
-	$result=mysqli_query($conexion,$sql);
-	$validar=0;
-	if(mysqli_num_rows($result) > 0){
-		header("location:index.php");
-	}
- ?>
+require_once "clases/Conexion.php";
+$obj = new conectar();
+$conexion = $obj->conexion();
+
+$sql = "SELECT * from usuarios where email='admin'";
+$result = mysqli_query($conexion, $sql);
+$validar = 0;
+if (mysqli_num_rows($result) > 0) {
+	header("location:index.php");
+}
+?>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>registro</title>
 	<link rel="stylesheet" type="text/css" href="librerias/bootstrap/css/bootstrap.css">
@@ -22,6 +23,7 @@
 	<script src="js/funciones.js"></script>
 
 </head>
+
 <body style="background-color: gray">
 	<br><br><br>
 	<div class="container">
@@ -51,35 +53,35 @@
 		</div>
 	</div>
 </body>
+
 </html>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#registro').click(function(){
+	$(document).ready(function() {
+		$('#registro').click(function() {
 
-			vacios=validarFormVacio('frmRegistro');
+			vacios = validarFormVacio('frmRegistro');
 
-			if(vacios > 0){
+			if (vacios > 0) {
 				alert("Debes llenar todos los campos!!");
 				return false;
 			}
 
-			datos=$('#frmRegistro').serialize();
+			datos = $('#frmRegistro').serialize();
 			$.ajax({
-				type:"POST",
-				data:datos,
-				url:"procesos/regLogin/registrarUsuario.php",
-				success:function(r){
+				type: "POST",
+				data: datos,
+				url: "procesos/regLogin/registrarUsuario.php",
+				success: function(r) {
 					alert(r);
 
-					if(r==1){
+					if (r == 1) {
 						alert("Agregado con exito");
-					}else{
-						alert("Fallo al agregar :(");
+					} else {
+						alert("Fallo al agregar");
 					}
 				}
 			});
 		});
 	});
 </script>
-

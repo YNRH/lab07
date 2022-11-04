@@ -37,7 +37,7 @@ class ventas{
 		$conexion=$c->conexion();
 
 		$fecha=date('Y-m-d');
-		$idventa=self::creaFolio();
+	//	$idventa=self::creaFolio();
 		$datos=$_SESSION['tablaComprasTemp'];
 		$idusuario=$_SESSION['iduser'];
 		$r=0;
@@ -45,19 +45,19 @@ class ventas{
 		for ($i=0; $i < count($datos) ; $i++) { 
 			$d=explode("||", $datos[$i]);
 
-			$sql="INSERT into ventas (id_venta,
+			$sql="INSERT into ventas (
 										id_cliente,
 										id_producto,
 										id_usuario,
 										precio,
 										fechaCompra)
-							values ('$idventa',
-									'$d[4]', #5
+							values (
+									'$d[5]',
 									'$d[0]',
 									'$idusuario',
 									'$d[3]',
 									'$fecha')";
-			$r = $r + $result=mysqli_query($conexion,$sql);
+			$r=$r + $result=mysqli_query($conexion,$sql);
 		}
 
 		return $r;
@@ -67,22 +67,23 @@ class ventas{
 		$c= new conectar();
 		$conexion=$c->conexion();
 
-		$sql="SELECT id_venta from ventas group by id_venta desc";
-
+		$sql="SELECT id_venta from ventas group by id_venta order by id_venta desc";
+		
 		$resul=mysqli_query($conexion,$sql);
-		$id=mysqli_fetch_row($resul)[0];
+		//$id=mysqli_fetch_row($resul)[0];
 
-		if($id=="" or $id==null or $id==0){
-			return 1;
-		}else{
-			return $id + 1;
-		}
+		//if($id=="" or $id==null or $id==0){
+			//return 1;
+	//	}else{
+			//return $id + 1;
+		//}
+
 	}
 	public function nombreCliente($idCliente){
 		$c= new conectar();
 		$conexion=$c->conexion();
 
-		$sql="SELECT apellido,nombre 
+		 $sql="SELECT apellido,nombre 
 			from clientes 
 			where id_cliente='$idCliente'";
 		$result=mysqli_query($conexion,$sql);
@@ -96,9 +97,7 @@ class ventas{
 		$c= new conectar();
 		$conexion=$c->conexion();
 
-		$sql="SELECT precio 
-				from ventas 
-				where id_venta='$idventa'";
+		$sql="SELECT precio from ventas where id_venta='$idventa'";
 		$result=mysqli_query($conexion,$sql);
 
 		$total=0;

@@ -1,5 +1,4 @@
 <?php 
-
 	class conectar{
 		private $servidor="bdmysql.testing-apps.com";
 		private $usuario="grupo7";
@@ -8,12 +7,10 @@
 
 		public function conexion(){
 			$conexion=mysqli_connect($this->servidor,
-									 $this->usuario,
-									 $this->password,
-									 $this->bd);
+									$this->usuario,
+									$this->password,
+									$this->bd);
 			return $conexion;
 		}
 	}
-
-
-?>
+ ?>

@@ -10,13 +10,11 @@
 			$sql="INSERT into usuarios (nombre,
 								apellido,
 								email,
-								password,
-								fechaCaptura)
+								password, fechaCaptura)
 						values ('$datos[0]',
 								'$datos[1]',
 								'$datos[2]',
-								'$datos[3]',
-								'$fecha')";
+								'$datos[3]', '$fecha')";
 			return mysqli_query($conexion,$sql);
 		}
 		public function loginUser($datos){
@@ -29,8 +27,7 @@
 
 			$sql="SELECT * 
 					from usuarios 
-				where email='$datos[0]'
-				and password='$password'";
+				where email='$datos[0]' and password='$password'";
 			$result=mysqli_query($conexion,$sql);
 
 			if(mysqli_num_rows($result) > 0){
@@ -47,15 +44,13 @@
 
 			$sql="SELECT id_usuario 
 					from usuarios 
-					where email='$datos[0]'
-					and password='$password'"; 
+					where email='$datos[0]' and password='$password'"; 
 			$result=mysqli_query($conexion,$sql);
 
 			return mysqli_fetch_row($result)[0];
 		}
 
 		public function obtenDatosUsuario($idusuario){
-
 			$c=new conectar();
 			$conexion=$c->conexion();
 
@@ -63,8 +58,7 @@
 							nombre,
 							apellido,
 							email
-					from usuarios 
-					where id_usuario='$idusuario'";
+					from usuarios where id_usuario='$idusuario'";
 			$result=mysqli_query($conexion,$sql);
 
 			$ver=mysqli_fetch_row($result);
@@ -75,7 +69,6 @@
 							'apellido' => $ver[2],
 							'email' => $ver[3]
 						);
-
 			return $datos;
 		}
 
@@ -93,11 +86,8 @@
 		public function eliminaUsuario($idusuario){
 			$c=new conectar();
 			$conexion=$c->conexion();
-
-			$sql="DELETE from usuarios 
-					where id_usuario='$idusuario'";
+			$sql="DELETE from usuarios where id_usuario='$idusuario'";
 			return mysqli_query($conexion,$sql);
 		}
 	}
-
  ?>

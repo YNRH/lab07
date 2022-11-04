@@ -1,6 +1,4 @@
-create database ventas;
 
-use ventas;
 
 create table usuarios(
 				id_usuario int auto_increment,
@@ -53,12 +51,13 @@ create table clientes(
 				rfc varchar(200),
 				primary key(id_cliente)
 					);
--- Recuerda agregar el id de usuario por favor 
+					
 create table ventas(
-				id_venta int not null,
+				id_venta int auto_increment,
 				id_cliente int,
 				id_producto int,
 				id_usuario int,
 				precio float,
-				fechaCompra date
+				fechaCompra date,
+				primary key(id_venta)
 					);

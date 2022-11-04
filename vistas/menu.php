@@ -1,80 +1,65 @@
 <?php require_once "dependencias.php" ?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title></title>
+  <title> </title>
 </head>
 
 <body>
-
-  <!-- Begin Navbar -->
-  <div id="nav">
-    <div class="navbar navbar-default navbar-fixed-top" data-spy="affix" data-offset-top="100">
+  <div>
+    <nav class="navbar fixed-top  navbar-expand-md navbar-dark bg-info"  data-spy="affix" data-offset-top="100">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar">aasJKAHS</span>
-            <span class="icon-bar">as</span>
-            <span class="icon-bar">sadsad</span>
-          </button>
-          <a class="navbar-brand" href="inicio.php"><img class="img-responsive logo img-thumbnail" src="../img/sistemaventas.JPG" alt="" width="150px" height="150px"></a>
+        <div class="navbar-header" >
+          <a class="navbar-brand" href="inicio.php"><img class=" img-responsive logo img-thumbnail" src="../img/sistemaventas.JPG" alt="" style=" position:absolute" width="150px" height="150px"></a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="inicio.php"> <i class="bi bi-house-door-fill"></i> Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-card-list"></i>
+              Administrar Articulos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
+              <li><a class="dropdown-item" href="articulos.php">Articulos</a></li>
+            </ul>
+          </li>
+          <?php
+          if ($_SESSION['usuario'] == "admin") :
+          ?>
+            <li><a class="nav-link  text-light" href="usuarios.php"> <i class="bi bi-person-fill"></i> Administrar usuarios</a>
             </li>
+          <?php
+          endif;
+          ?>
 
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Administrar Articulos <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="categorias.php">Categorias</a></li>
-                <li><a href="articulos.php">Articulos</a></li>
-              </ul>
-            </li>
-
-
-            <?php
-            if ($_SESSION['usuario'] == "admin") :
-            ?>
-              <li><a href="usuarios.php"><span class="glyphicon glyphicon-user"></span> Administrar usuarios</a>
-              </li>
-            <?php
-            endif;
-            ?>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="clientes.php"><i class="bi bi-people-fill"></i>
+              Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="ventas.php"> <i class="bi bi-currency-dollar"></i>Vender Articulo</a>
+          </li>
 
 
-            <li><a href="clientes.php"><span class="glyphicon glyphicon-user"></span> Clientes</a>
-            </li>
-            <li><a href="ventas.php"><span class="glyphicon glyphicon-usd"></span> Vender Articulo</a>
-            </li>
-
-            <li class="dropdown">
-              <a href="#" style="color: red" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Usuario: <?php echo $_SESSION['usuario']; ?> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li> <a style="color: red" href="../procesos/salir.php"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
-
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!--/.nav-collapse -->
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a href="#" class="navbar-brand dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-person-fill"></i>
+              Usuario: <?php echo $_SESSION['usuario']; ?> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a style="color: red" class="dropdown-item" href="../procesos/salir.php"><i class="bi bi-power"></i> Salir</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <!--/.contatiner -->
-    </div>
   </div>
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-
-  <!-- /container -->
-
-
 </body>
 
 </html>
-
 <script type="text/javascript">
   $(window).scroll(function() {
     if ($(document).scrollTop() > 150) {
